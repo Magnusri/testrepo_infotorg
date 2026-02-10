@@ -1,0 +1,229 @@
+<?xml version="1.0"?>
+<definitions name="MotorvognData" targetNamespace="http://ws.infotorg.no/xml/SVV/MotorvognData/2022-03-15/MotorvognData.wsdl"
+	xmlns:tns="http://ws.infotorg.no/xml/SVV/MotorvognData/2022-03-15/MotorvognData.wsdl"
+	xmlns:brukersesjon="http://ws.infotorg.no/xml/Admin/Brukersesjon/2006-07-07/Brukersesjon.xsd"
+	xmlns:transaksjon="http://ws.infotorg.no/xml/Admin/Transaksjon/2006-07-07/Transaksjon.xsd"
+	xmlns:feil="http://ws.infotorg.no/xml/Feil/Feil.xsd"
+	xmlns:mvd="http://ws.infotorg.no/xml/SVV/MotorvognData/2022-03-15/MotorvognData.xsd"
+	xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+	<documentation>
+        Tjenestespesifikasjon for MotorvognData
+        @ 2019 EVRY
+        Forfatter: Leif Arne Sigurdsen og Linn-Hege Kristensen
+        @ 2022 Tietoevry
+        Oppdater: Tomasz Marcinkowski
+	</documentation>
+
+	<types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://ws.infotorg.no/xml/Admin/Brukersesjon/2006-07-07/Brukersesjon.xsd" schemaLocation="https://ws.infotorg.no/xml/Admin/Brukersesjon/2006-07-07/Brukersesjon.xsd"/>
+			<import namespace="http://ws.infotorg.no/xml/Admin/Transaksjon/2006-07-07/Transaksjon.xsd" schemaLocation="https://ws.infotorg.no/xml/Admin/Transaksjon/2006-07-07/Transaksjon.xsd"/>
+			<import namespace="http://ws.infotorg.no/xml/Feil/Feil.xsd" schemaLocation="https://ws.infotorg.no/xml/Feil/Feil.xsd"/>
+			<import namespace="http://ws.infotorg.no/xml/SVV/MotorvognData/2022-03-15/MotorvognData.xsd" schemaLocation="https://ws.infotorg.no/xml/SVV/MotorvognData/2022-03-15/MotorvognData.xsd"/>
+		</schema>
+	</types>
+
+	<message name="spoerring">
+		<part name="Brukersesjon" element="brukersesjon:Brukersesjon"/>
+		<part name="Transaksjon" element="transaksjon:Transaksjon"/>
+	</message>
+
+	<message name="svar">
+		<part name="Brukersesjon" element="brukersesjon:Brukersesjon"/>
+		<part name="Transaksjonsinfo" element="transaksjon:Transaksjonsinfo"/>
+	</message>
+
+	<message name="feil">
+		<part name="feil" element="feil:feil"/>
+	</message>
+
+	<message name="hentMotorvognDataRequest">
+		<part name="hentMotorvognData" element="mvd:hentMotorvognData" />
+	</message>
+
+	<message name="hentMotorvognDataResponse">
+		<part name="hentMotorvognDataResponse" element="mvd:MotorvognData" />
+	</message>
+
+	<message name="hentMotorvognEierRequest">
+		<part name="hentMotorvognEier" element="mvd:hentMotorvognEier" />
+	</message>
+
+	<message name="hentMotorvognEierResponse">
+		<part name="hentMotorvognEierResponse" element="mvd:MotorvognEier" />
+	</message>
+
+	<message name="hentMotorvognTekniskRequest">
+		<part name="hentMotorvognTekniskRequest" element="mvd:hentMotorvognTeknisk" />
+	</message>
+
+	<message name="hentMotorvognTekniskResponse">
+		<part name="hentMotorvognTekniskResponse" element="mvd:MotorvognTeknisk" />
+	</message>
+
+	<message name="hentMotorvognNavneSokRequest">
+		<part name="hentMotorvognTekniskRequest" element="mvd:hentMotorvognNavneSok" />
+	</message>
+
+	<message name="hentMotorvognNavneSokResponse">
+		<part name="hentMotorvognTekniskResponse" element="mvd:MotorvognNavneSok" />
+	</message>
+
+	<message name="hentMotorvognOppslagRequest">
+		<part name="hentMotorvognOppslagRequest" element="mvd:hentMotorvognOppslag" />
+	</message>
+
+	<message name="hentMotorvognOppslagResponse">
+		<part name="hentMotorvognOppslagResponse" element="mvd:MotorvognOppslag" />
+	</message>
+
+	<message name="hentMotorvognHistoriskRequest">
+		<part name="hentMotorvognHistoriskRequest" element="mvd:hentMotorvognHistorisk" />
+	</message>
+
+	<message name="hentMotorvognHistoriskResponse">
+		<part name="hentMotorvognHistoriskResponse" element="mvd:MotorvognHistorisk" />
+	</message>
+
+	<portType name="mvdPortType">
+		<operation name="hentMotorvognData">
+			<input message="tns:hentMotorvognDataRequest" />
+			<output message="tns:hentMotorvognDataResponse" />
+			<fault name="feil" message="tns:feil"/>
+		</operation>
+		<operation name="hentMotorvognEier">
+			<input message="tns:hentMotorvognEierRequest" />
+			<output message="tns:hentMotorvognEierResponse" />
+			<fault name="feil" message="tns:feil" />
+		</operation>
+		<operation name="hentMotorvognTeknisk">
+			<input message="tns:hentMotorvognTekniskRequest" />
+			<output message="tns:hentMotorvognTekniskResponse" />
+			<fault name="feil" message="tns:feil" />
+		</operation>
+		<operation name="hentMotorvognNavneSok">
+			<input message="tns:hentMotorvognNavneSokRequest" />
+			<output message="tns:hentMotorvognNavneSokResponse" />
+			<fault name="feil" message="tns:feil" />
+		</operation>
+		<operation name="hentMotorvognOppslag">
+			<input message="tns:hentMotorvognOppslagRequest" />
+			<output message="tns:hentMotorvognOppslagResponse" />
+			<fault name="feil" message="tns:feil" />
+		</operation>
+		<operation name="hentMotorvognHistorisk">
+			<input message="tns:hentMotorvognHistoriskRequest" />
+			<output message="tns:hentMotorvognHistoriskResponse" />
+			<fault name="feil" message="tns:feil" />
+		</operation>
+	</portType>
+
+	<binding name="mvdBinding" type="tns:mvdPortType">
+		<soapbind:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="hentMotorvognData">
+			<soapbind:operation soapAction="" />
+			<input>
+				<soapbind:header message="tns:spoerring" part="Brukersesjon" use="literal"/>
+				<soapbind:header message="tns:spoerring" part="Transaksjon" use="literal"/>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:header message="tns:svar" part="Brukersesjon" use="literal"/>
+				<soapbind:header message="tns:svar" part="Transaksjonsinfo" use="literal"/>
+				<soapbind:body use="literal"/>
+			</output>
+			<fault name="feil">
+				<soapbind:fault name="feil" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="hentMotorvognEier">
+			<soapbind:operation soapAction="" />
+			<input>
+				<soapbind:header message="tns:spoerring" part="Brukersesjon" use="literal"/>
+				<soapbind:header message="tns:spoerring" part="Transaksjon" use="literal"/>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:header message="tns:svar" part="Brukersesjon" use="literal"/>
+				<soapbind:header message="tns:svar" part="Transaksjonsinfo" use="literal"/>
+				<soapbind:body use="literal"/>
+			</output>
+			<fault name="feil">
+				<soapbind:fault name="feil" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="hentMotorvognTeknisk">
+		<soapbind:operation soapAction="" />
+		<input>
+			<soapbind:header message="tns:spoerring" part="Brukersesjon" use="literal"/>
+			<soapbind:header message="tns:spoerring" part="Transaksjon" use="literal"/>
+			<soapbind:body use="literal"/>
+		</input>
+		<output>
+			<soapbind:header message="tns:svar" part="Brukersesjon" use="literal"/>
+			<soapbind:header message="tns:svar" part="Transaksjonsinfo" use="literal"/>
+			<soapbind:body use="literal"/>
+		</output>
+		<fault name="feil">
+			<soapbind:fault name="feil" use="literal"/>
+		</fault>
+		</operation>
+		<operation name="hentMotorvognNavneSok">
+			<soapbind:operation soapAction="" />
+			<input>
+				<soapbind:header message="tns:spoerring" part="Brukersesjon" use="literal"/>
+				<soapbind:header message="tns:spoerring" part="Transaksjon" use="literal"/>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:header message="tns:svar" part="Brukersesjon" use="literal"/>
+				<soapbind:header message="tns:svar" part="Transaksjonsinfo" use="literal"/>
+				<soapbind:body use="literal"/>
+			</output>
+			<fault name="feil">
+				<soapbind:fault name="feil" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="hentMotorvognOppslag">
+			<soapbind:operation soapAction="" />
+			<input>
+				<soapbind:header message="tns:spoerring" part="Brukersesjon" use="literal"/>
+				<soapbind:header message="tns:spoerring" part="Transaksjon" use="literal"/>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:header message="tns:svar" part="Brukersesjon" use="literal"/>
+				<soapbind:header message="tns:svar" part="Transaksjonsinfo" use="literal"/>
+				<soapbind:body use="literal"/>
+			</output>
+			<fault name="feil">
+				<soapbind:fault name="feil" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="hentMotorvognHistorisk">
+			<soapbind:operation soapAction="" />
+			<input>
+				<soapbind:header message="tns:spoerring" part="Brukersesjon" use="literal"/>
+				<soapbind:header message="tns:spoerring" part="Transaksjon" use="literal"/>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:header message="tns:svar" part="Brukersesjon" use="literal"/>
+				<soapbind:header message="tns:svar" part="Transaksjonsinfo" use="literal"/>
+				<soapbind:body use="literal"/>
+			</output>
+			<fault name="feil">
+				<soapbind:fault name="feil" use="literal"/>
+			</fault>
+		</operation>
+
+	</binding>
+
+	<service name="MotorvognData">
+		<port name="mvdPort" binding="tns:mvdBinding">
+			<soapbind:address location="https://ws.infotorg.no/ws/SVV/MotorvognData.pl" />
+		</port>
+	</service>
+</definitions>
