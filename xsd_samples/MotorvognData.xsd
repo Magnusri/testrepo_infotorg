@@ -1,0 +1,1906 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema targetNamespace="http://ws.infotorg.no/xml/SVV/MotorvognData/2022-03-15/MotorvognData.xsd"
+		xmlns:tns="http://ws.infotorg.no/xml/SVV/MotorvognData/2022-03-15/MotorvognData.xsd"
+		xmlns:feil="http://ws.infotorg.no/xml/Feil/Feil.xsd"
+		xmlns="http://www.w3.org/2001/XMLSchema">
+
+	<annotation>
+		<documentation xml:lang="no">
+			Datatyper for MotorvognData.
+
+			© 2019 EVRY
+			Forfatter: Leif Arne Sigurdsen og Linn-Hege Kristensen
+			© 2022 Tietoevry
+			Oppdater: Tomasz Marcinkowski og Stanislaw Romanski
+		</documentation>
+	</annotation>
+
+	<!-- Request -->
+	<element name="hentMotorvognData">
+		<complexType>
+			<sequence>
+				<element minOccurs="1" maxOccurs="1" name="type" type="tns:SearchType" /> <!-- SearchType -->
+				<!--element name="type" type="string" minOccurs="1" maxOccurs="1">
+					<annotation>
+						<documentation xml:lang="no">Datatype (ssn, chassis, registration-number, company)</documentation>
+					</annotation>
+				</element-->
+				<element name="input" type="string" minOccurs="1" maxOccurs="1">
+					<annotation>
+						<documentation xml:lang="no">Det som skal søkes på</documentation>
+					</annotation>
+				</element>
+				<element name="lastname" type="string" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation xml:lang="no">Etternavn</documentation>
+					</annotation>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="hentMotorvognEier">
+		<complexType>
+			<sequence>
+				<element minOccurs="1" maxOccurs="1" name="type" type="tns:SearchType" /> <!-- SearchType -->
+				<!--element name="type" type="string" minOccurs="1" maxOccurs="1">
+					<annotation>
+						<documentation xml:lang="no">Datatype (ssn, chassis, registration-number, company)</documentation>
+					</annotation>
+				</element-->
+				<element name="input" type="string" minOccurs="1" maxOccurs="1">
+					<annotation>
+						<documentation xml:lang="no">Det som skal søkes på</documentation>
+					</annotation>
+				</element>
+				<element name="lastname" type="string" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation xml:lang="no">Etternavn</documentation>
+					</annotation>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="hentMotorvognTeknisk">
+		<complexType>
+			<sequence>
+				<element minOccurs="1" maxOccurs="1" name="type" type="tns:SearchType" /> <!-- SearchType -->
+				<!--element name="type" type="string" minOccurs="1" maxOccurs="1">
+					<annotation>
+						<documentation xml:lang="no">Datatype (ssn, chassis, registration-number, company)</documentation>
+					</annotation>
+				</element-->
+				<element name="input" type="string" minOccurs="1" maxOccurs="1">
+					<annotation>
+						<documentation xml:lang="no">Det som skal søkes på</documentation>
+					</annotation>
+				</element>
+				<element name="lastname" type="string" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation xml:lang="no">Etternavn</documentation>
+					</annotation>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="hentMotorvognNavneSok">
+		<complexType>
+			<all>
+				<element name="type" type="string" minOccurs="1" maxOccurs="1">
+					<annotation>
+						<documentation xml:lang="no">Datatype name</documentation>
+					</annotation>
+				</element>
+				<element name="input" type="string" minOccurs="1" maxOccurs="1">
+					<annotation>
+						<documentation xml:lang="no">Det som skal søkes på</documentation>
+					</annotation>
+				</element>
+				<element name="lastname" type="string" minOccurs="0" maxOccurs="1">
+
+				</element>
+				<element name="erPerson" type="string" minOccurs="0" maxOccurs="1">
+
+				</element>
+				<element name="fodselsdato" type="string" minOccurs="0" maxOccurs="1">
+
+				</element>
+				<element name="fra" type="string" minOccurs="0" maxOccurs="1">
+
+				</element>
+				<element name="fylke" type="string" minOccurs="0" maxOccurs="1">
+
+				</element>
+				<element name="postnummer" type="string" minOccurs="0" maxOccurs="1">
+
+				</element>
+				<element name="poststed" type="string" minOccurs="0" maxOccurs="1">
+
+				</element>
+			</all>
+
+		</complexType>
+	</element>
+
+	<element name="hentMotorvognOppslag">
+		<complexType>
+			<sequence>
+				<element name="kjoretoy" minOccurs="1" maxOccurs="unbounded">
+					<complexType>
+						<sequence>
+							<element name="dtg" type="dateTime"/>
+							<element name="kjennemerke" type="string"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="hentMotorvognHistorisk">
+		<complexType>
+			<sequence>
+				<element name="registration" type="string" minOccurs="1" maxOccurs="1">
+					<annotation>
+						<documentation xml:lang="no">Registration number</documentation>
+					</annotation>
+				</element>
+				<element name="tilTidspunkt" type="dateTime" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation xml:lang="no">Til og med tidspunkt</documentation>
+					</annotation>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="MotorvognData" type="tns:MotorvognData"/>
+
+	<complexType name="MotorvognData">
+		<sequence>
+			<element name="data" nillable="true" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="eierinformasjon" type="tns:eierinformasjon">
+							<annotation>
+								<documentation>Gjeldende eierforhold for kjøretøy</documentation>
+							</annotation>
+						</element>
+						<element name="periodiskKjoretoyKontroller" type="tns:periodiskKjoretoyKontroller"/>
+						<element name="kjoretoeyinformasjon" type="tns:kjoretoeyinformasjon"/>
+						<element name="maalOgVekt" type="tns:maalOgVekt"/>
+						<element name="motorOgKraftoverfoering" type="tns:motorOgKraftoverfoering"/>
+						<element name="miljoedata" type="tns:miljoedata"/>
+						<element name="annetTeknisk" type="tns:annetTeknisk"/>
+						<element name="sitteOgStaaplasser" type="tns:sitteOgStaaplasser"/>
+						<element name="tilhengerkopling" type="tns:tilhengerkopling"/>
+						<element name="akselinformasjon" type="tns:akselinformasjon"/>
+						<element name="dekkOgFelgtype" type="tns:dekkOgFelgtype"/>
+					</sequence>
+					<attribute name="id" type="integer"/>
+					<attribute name="message" type="string"/>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<element name="MotorvognOppslag" type="tns:MotorvognOppslag"/>
+
+	<complexType name="MotorvognOppslag">
+		<sequence>
+			<element name="data" minOccurs="0" maxOccurs="unbounded">
+				<complexType>
+					<all>
+						<element name="eierinformasjon" minOccurs="0" type="tns:eierinformasjonoppslag">
+							<annotation>
+								<documentation>Gjeldende eierforhold for kjøretøy</documentation>
+							</annotation>
+						</element>
+						<element name="periodiskKjoretoyKontroller" minOccurs="0" type="tns:periodiskKjoretoyKontroller"/>
+						<element name="kjoretoeyinformasjon" minOccurs="0" type="tns:kjoretoeyinformasjon"/>
+						<element name="maalOgVekt" minOccurs="0" type="tns:maalOgVekt"/>
+						<element name="motorOgKraftoverfoering" minOccurs="0" type="tns:motorOgKraftoverfoering"/>
+						<element name="miljoedata" minOccurs="0" type="tns:miljoedata"/>
+						<element name="annetTeknisk" minOccurs="0" type="tns:annetTeknisk"/>
+						<element name="sitteOgStaaplasser" minOccurs="0" type="tns:sitteOgStaaplasser"/>
+						<element name="tilhengerkopling" minOccurs="0" type="tns:tilhengerkopling"/>
+						<element name="akselinformasjon" minOccurs="0" type="tns:akselinformasjon"/>
+						<element name="dekkOgFelgtype" minOccurs="0" type="tns:dekkOgFelgtype"/>
+						<element name="arsprovekjennemerke" minOccurs="0" type="tns:arsprovekjennemerke"/>
+						<element name="dagsprovekjennemerke" minOccurs="0" type="tns:dagsprovekjennemerke"/>
+					</all>
+					<attribute name="id" type="integer"/>
+				</complexType>
+			</element>
+			<element name="responskoder" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="responskode" type="tns:responskodeoppslag" minOccurs="0" maxOccurs="unbounded">
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<element name="MotorvognHistorisk" type="tns:MotorvognHistorisk"/>
+
+	<complexType name="MotorvognHistorisk">
+		<sequence>
+			<element name="eierskap" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="eier" minOccurs="0" maxOccurs="unbounded" type="tns:eierskaphistorikk"/>
+						<element name="leasingtaker" minOccurs="0" maxOccurs="unbounded" type="tns:eierskaphistorikk"/>
+						<element name="medeier" minOccurs="0" maxOccurs="unbounded" type="tns:eierskaphistorikk"/>
+						<element name="underenhet" minOccurs="0" maxOccurs="unbounded" type="tns:eierskaphistorikk"/>
+					</sequence>
+					<attribute name="id" type="integer"/>
+				</complexType>
+			</element>
+			<element name="kjennemerker" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="kjennemerkekategori" minOccurs="0" type="string"/>
+						<element name="kjennemerketype" minOccurs="0" type="tns:kodeverdier"/>
+						<element name="periode" minOccurs="0" type="tns:periode"/>
+						<element name="tegnkombinasjon" minOccurs="0" type="string"/>
+					</sequence>
+					<attribute name="id" type="integer"/>
+				</complexType>
+			</element>
+			<element name="registrering" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="kjoringensArt" minOccurs="0" type="tns:kodeverdier"/>
+						<element name="midlertidigAvregistreringArsak" minOccurs="0" type="tns:kodeverdier"/>
+						<element name="periode" minOccurs="0" type="tns:periode"/>
+						<element name="registreringsstatus" minOccurs="0" type="tns:kodeverdier"/>
+					</sequence>
+					<attribute name="id" type="integer"/>
+				</complexType>
+			</element>
+			<element name="kjoretoyid" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="kjennemerke" minOccurs="0" type="string"/>
+						<element name="kuid" minOccurs="0" type="string"/>
+						<element name="kjoretoyErKryssbyttet" minOccurs="0" type="boolean"/>
+						<element name="kryssbytter" minOccurs="0" maxOccurs="unbounded" type="tns:kryssbytte"/>
+						<element name="unntattOffentlighet" minOccurs="0" maxOccurs="unbounded" type="tns:kodeverdier"/>
+						<element name="periode" minOccurs="0" type="tns:periode"/>
+						<element name="registreringsstatus" minOccurs="0" type="tns:kodeverdier"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<element name="MotorvognEier" type="tns:MotorvognEier"/>
+
+	<complexType name="MotorvognEier">
+		<sequence>
+			<element name="data" nillable="true" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="eierinformasjon" type="tns:eierinformasjon">
+							<annotation>
+								<documentation>Gjeldende eierforhold for kjøretøy</documentation>
+							</annotation>
+						</element>
+						<element name="periodiskKjoretoyKontroller" type="tns:periodiskKjoretoyKontroller"/>
+						<element name="kjoretoeyinformasjon" type="tns:kjoretoeyinformasjon"/>
+					</sequence>
+					<attribute name="id" type="integer"/>
+					<attribute name="message" type="string"/>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<element name="MotorvognNavneSok" type="tns:MotorvognNavneSok"/>
+
+	<complexType name="MotorvognNavneSok">
+		<sequence>
+			<element name="antallITreffliste" minOccurs="0" type="integer"/>
+			<element name="antallTreffTotalt" minOccurs="0" type="integer"/>
+			<element name="responskoder" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="responskode" type="tns:responskode" minOccurs="0" maxOccurs="unbounded">
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="data" maxOccurs="unbounded" nillable="true">
+				<complexType>
+					<sequence>
+						<element name="eierinformasjon" type="tns:navnesok">
+							<annotation>
+								<documentation>Gjeldende eierforhold for kjøretøy</documentation>
+							</annotation>
+						</element>
+					</sequence>
+					<attribute name="id" type="integer"/>
+					<attribute name="message" type="string"/>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<element name="MotorvognTeknisk" type="tns:MotorvognTeknisk"/>
+
+	<complexType name="MotorvognTeknisk">
+		<sequence>
+			<element name="data" nillable="true" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="eierinformasjon" type="tns:eierinformasjon">
+							<annotation>
+								<documentation>Gjeldende eierforhold for kjøretøy</documentation>
+							</annotation>
+						</element>
+						<element name="periodiskKjoretoyKontroller" type="tns:periodiskKjoretoyKontroller"/>
+						<element name="kjoretoeyinformasjon" type="tns:kjoretoeyinformasjon"/>
+						<element name="maalOgVekt" type="tns:maalOgVekt"/>
+						<element name="motorOgKraftoverfoering" type="tns:motorOgKraftoverfoering"/>
+						<element name="miljoedata" type="tns:miljoedata"/>
+						<element name="annetTeknisk" type="tns:annetTeknisk"/>
+						<element name="sitteOgStaaplasser" type="tns:sitteOgStaaplasser"/>
+						<element name="tilhengerkopling" type="tns:tilhengerkopling"/>
+						<element name="akselinformasjon" type="tns:akselinformasjon"/>
+						<element name="dekkOgFelgtype" type="tns:dekkOgFelgtype"/>
+					</sequence>
+					<attribute name="id" type="integer"/>
+					<attribute name="message" type="string"/>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<!-- Mainelements -->
+	<complexType name="eierinformasjon">
+		<sequence>
+			<element name="eier" nillable="true" minOccurs="0" type="tns:eierskap">
+				<annotation>
+					<documentation>Person eller enhet. Personopplysningene er basert på siste tilgjengelige data fra folkeregisteret.</documentation>
+				</annotation>
+			</element>
+			<element name="medeier" nillable="true" minOccurs="0" type="tns:eierskap">
+				<annotation>
+					<documentation>Person eller enhet. Personopplysningene er basert på siste tilgjengelige data fra folkeregisteret.</documentation>
+				</annotation>
+			</element>
+			<element name="leasingtaker" nillable="true" minOccurs="0" type="tns:eierskap">
+				<annotation>
+					<documentation>Person eller enhet. Personopplysningene er basert på siste tilgjengelige data fra folkeregisteret.</documentation>
+				</annotation>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="eierinformasjonoppslag">
+		<sequence>
+			<element name="eier" nillable="true" minOccurs="0" type="tns:eierskapoppslag">
+				<annotation>
+					<documentation>Person eller enhet. Personopplysningene er basert på siste tilgjengelige data fra folkeregisteret.</documentation>
+				</annotation>
+			</element>
+			<element name="medeier" nillable="true" minOccurs="0" type="tns:eierskapoppslag">
+				<annotation>
+					<documentation>Person eller enhet. Personopplysningene er basert på siste tilgjengelige data fra folkeregisteret.</documentation>
+				</annotation>
+			</element>
+			<element name="leasingtaker" nillable="true" minOccurs="0" type="tns:eierskapoppslag">
+				<annotation>
+					<documentation>Person eller enhet. Personopplysningene er basert på siste tilgjengelige data fra folkeregisteret.</documentation>
+				</annotation>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="arsprovekjennemerke">
+		<sequence>
+			<element name="ansvarlig" nillable="true" minOccurs="0" type="tns:eierskapoppslag">
+				<annotation>
+					<documentation>Person eller enhet. Personopplysningene er basert på siste tilgjengelige data fra folkeregisteret.</documentation>
+				</annotation>
+			</element>
+			<element name="arsprovekjennemerkestatusFomTidspunkt" nillable="true" minOccurs="0" type="dateTime"/>
+			<element name="arsprovekjennemerkestatusTilTidspunkt" nillable="true" minOccurs="0" type="dateTime"/>
+			<element name="arsprovekjennemerkestatus" nillable="true" minOccurs="0" type="tns:kodeverdier"/>
+			<element name="arsprovekjennemerketype" nillable="true" minOccurs="0" type="tns:kodeverdier"/>
+			<element name="bruksbegrensning" nillable="true" minOccurs="0" type="tns:kodeverdier"/>
+			<element name="fomTidspunkt" nillable="true" minOccurs="0" type="dateTime"/>
+			<element name="kjennemerke" nillable="true" minOccurs="0" type="string"/>
+			<element name="kjennemerkekategori" nillable="true" minOccurs="0" type="string"/>
+			<element name="registrertForstegangINorge" nillable="true" minOccurs="0" type="dateTime"/>
+			<element name="tilTidspunkt" nillable="true" minOccurs="0" type="dateTime"/>
+			<element name="kjoretoygruppe" nillable="true" minOccurs="0" type="tns:kodeverdier"/>
+			<element name="kjoringensArt" nillable="true" minOccurs="0" type="tns:kodeverdier"/>
+			<element name="registreringsstatus" nillable="true" minOccurs="0" type="tns:kodeverdier"/>
+			<element name="kjoreseddel" nillable="true" minOccurs="0" type="tns:kjoreseddel"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="dagsprovekjennemerke">
+		<sequence>
+			<element name="ansvarlig" nillable="true" minOccurs="0" type="tns:eierskapoppslag">
+				<annotation>
+					<documentation>Person eller enhet. Personopplysningene er basert på siste tilgjengelige data fra folkeregisteret.</documentation>
+				</annotation>
+			</element>
+			<element name="arsprovekjennemerkestatusFomTidspunkt" nillable="true" minOccurs="0" type="dateTime"/>
+			<element name="arsprovekjennemerkestatusTilTidspunkt" nillable="true" minOccurs="0" type="dateTime"/>
+			<element name="arsprovekjennemerkestatus" nillable="true" minOccurs="0" type="tns:kodeverdier"/>
+			<element name="arsprovekjennemerketype" nillable="true" minOccurs="0" type="tns:kodeverdier"/>
+			<element name="formal" nillable="true" minOccurs="0" type="tns:kodeverdier"/>
+			<element name="gyldigAntallDager" nillable="true" minOccurs="0" type="int"/>
+			<element name="gyldigFomDato" nillable="true" minOccurs="0" type="date"/>
+			<element name="gyldigTomDato" nillable="true" minOccurs="0" type="date"/>
+			<element name="kjennemerke" nillable="true" minOccurs="0" type="string"/>
+			<element name="kjennemerkekategori" nillable="true" minOccurs="0" type="string"/>
+			<element name="kjorestrekning" nillable="true" minOccurs="0" type="string"/>
+			<element name="kontrollnummer" nillable="true" minOccurs="0" type="string"/>
+			<element name="merknad" nillable="true" minOccurs="0" type="string"/>
+			<element name="kjoretoyopplysninger" nillable="true" minOccurs="0" type="tns:kjoretoyopplysninger"/>
+			<element name="kjoreseddel" nillable="true" minOccurs="0" type="tns:kjoreseddel"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="kjoreseddel">
+		<sequence>
+			<element name="ansvarlig" nillable="true" minOccurs="0" type="tns:eierskapoppslag"/>
+			<element name="bruker" nillable="true" minOccurs="0" type="string"/>
+			<element name="formal" nillable="true" minOccurs="0" type="tns:kodeverdier"/>
+			<element name="gyldigFomTidspunkt" nillable="true" minOccurs="0" type="dateTime"/>
+			<element name="gyldigTilTidspunkt" nillable="true" minOccurs="0" type="dateTime"/>
+			<element name="kjoretoyopplysninger" nillable="true" minOccurs="0" type="tns:kjoretoyopplysninger"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="kjoretoyopplysninger">
+		<sequence>
+			<element name="handelsbetegnelser" nillable="true" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="handelsbetegnelse" nillable="true" minOccurs="0" maxOccurs="unbounded">
+							<complexType>
+								<attribute name="navn" type="string">
+									<annotation>
+										<documentation xml:lang="no">B3 - s0.2.1 - Handelsbetegnelse: eg. "S60"</documentation>
+									</annotation>
+								</attribute>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="merke" nillable="true" minOccurs="0" type="string"/>
+			<element name="registrertForstegangAr" nillable="true" minOccurs="0" type="string"/>
+			<element name="understellsnummer" nillable="true" minOccurs="0" type="string"/>
+			<element name="tekniskkode" nillable="true" minOccurs="0" type="tns:kodeverdier"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="navnesok">
+		<sequence>
+			<element name="eier" nillable="true" minOccurs="0" type="tns:sok">
+				<annotation>
+					<documentation>Person eller enhet. Personopplysningene er basert på siste tilgjengelige data fra folkeregisteret.</documentation>
+				</annotation>
+			</element>
+			<element name="leasingtaker" nillable="true" minOccurs="0" type="tns:sok">
+				<annotation>
+					<documentation>Person eller enhet. Personopplysningene er basert på siste tilgjengelige data fra folkeregisteret.</documentation>
+				</annotation>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="responskode">
+		<sequence>
+			<element name="beskrivelse" minOccurs="0" nillable="true" type="string"/>
+			<element name="kode" minOccurs="0" nillable="true" type="string"/>
+		</sequence>
+	</complexType>
+	<complexType name="responskodeoppslag">
+		<sequence>
+			<element name="beskrivelse" minOccurs="0" nillable="true" type="string"/>
+			<element name="kode" minOccurs="0" nillable="true" type="string"/>
+			<element name="dtg" minOccurs="0" nillable="true" type="string"/>
+			<element name="kjennemerke" minOccurs="0" nillable="true" type="string"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="periodiskKjoretoyKontroller">
+		<sequence>
+			<element name="periodiskKjoretoyKontroll" nillable="true" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="kontrollfrist" nillable="true" type="date" minOccurs="0"/>
+						<element name="sistGodkjent" nillable="true" type="date" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="kjoretoeyinformasjon">
+		<sequence>
+			<element name="fabrikanter" nillable="true" minOccurs="0">
+				<annotation>
+					<documentation>B6 - s0.5 - Fabrikant av basis kjoretoy</documentation>
+				</annotation>
+				<complexType>
+					<sequence>
+						<element name="fabrikant" nillable="true" minOccurs="0" maxOccurs="unbounded">
+							<complexType>
+								<sequence>
+									<element name="fabrikantAdresse" nillable="true" minOccurs="0" type="string">
+										<annotation>
+											<documentation>Adresse for fabrikant</documentation>
+										</annotation>
+									</element>
+									<element name="fabrikantNavn" nillable="true" minOccurs="0" type="string">
+										<annotation>
+											<documentation>Navn pa fabrikant</documentation>
+										</annotation>
+									</element>
+									<element name="fabrikantRepresentantAdresse" nillable="true" minOccurs="0" type="string">
+										<annotation>
+											<documentation>Adresse for fabrikants representant</documentation>
+										</annotation>
+									</element>
+									<element name="fabrikantRepresentantNavn" nillable="true" minOccurs="0" type="string">
+										<annotation>
+											<documentation>Navn pa fabrikantens representant</documentation>
+										</annotation>
+									</element>
+								</sequence>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="merker" nillable="true" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="merke" nillable="true" minOccurs="0" maxOccurs="unbounded">
+							<complexType>
+								<attribute name="navn" type="string">
+									<annotation><documentation>B1 - s0.1 - Merke: e.g. "Volvo"</documentation></annotation>
+								</attribute>
+								<attribute name="kode" type="string" >
+									<annotation><documentation>Genereres</documentation></annotation>
+								</attribute>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="kjennemerker" nillable="true" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="kjennemerke" nillable="true" minOccurs="0" maxOccurs="unbounded">
+							<complexType>
+								<sequence>
+									<element name="stjaaletDato" nillable="true" minOccurs="0" maxOccurs="1" type="string">
+										<annotation>
+											<documentation>Elementet kommer med i xml dersom kjøretøy er stjålet. Det vil da være utfylt med stjålet fom. dato YYYY-MM-DD</documentation>
+										</annotation>
+									</element>
+									<element name="kjennemerke" nillable="true" minOccurs="0" type="string"/>
+									<element name="kjennemerketype" nillable="true" minOccurs="0" type="string"/>
+									<element name="understellsnummer" nillable="true" minOccurs="0" type="string"/>
+									<element name="fomTidspunkt" nillable="true" minOccurs="0" type="dateTime"/>
+								</sequence>
+								<attribute name="kjennemerkekategori" type="string"/>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="godkjenning" nillable="true" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="forstegangRegistrertDato" nillable="true" minOccurs="0" type="date"/>
+						<element name="registrertForstegangPaEierskap" nillable="true" minOccurs="0" type="dateTime"/>
+						<element name="bruktimport" nillable="true" minOccurs="0" maxOccurs="unbounded">
+							<complexType>
+								<sequence>
+									<element name="importland" minOccurs="0" nillable="true" type="string"/>
+									<element name="landskode" minOccurs="0" nillable="true" type="string"/>
+									<element name="kilometerstand" minOccurs="0" nillable="true" type="string"/>
+								</sequence>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+
+			</element>
+			<element name="handelsbetegnelser" nillable="true" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="handelsbetegnelse" nillable="true" minOccurs="0" maxOccurs="unbounded">
+							<complexType>
+								<attribute name="navn" type="string">
+									<annotation>
+										<documentation xml:lang="no">B3 - s0.2.1 - Handelsbetegnelse: eg. "S60"</documentation>
+									</annotation>
+								</attribute>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="avgiftskode" nillable="true" minOccurs="0" type="tns:avgiftskode"/>
+			<element name="registreringsstatus" nillable="true" minOccurs="0" type="tns:registreringsstatus"/>
+			<element name="kjoretoymerknader" nillable="true" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="kjoretoymerknad" nillable="true" minOccurs="0" maxOccurs="unbounded" type="tns:kjoretoymerknad"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="registreringsbegrensninger" nillable="true" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="registreringsbegrensning" nillable="true" minOccurs="0" maxOccurs="unbounded" type="tns:registreringsbegrensning"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="tekniskKode" nillable="true" minOccurs="0" type="tns:kodeverdier">
+				<annotation>
+					<documentation xml:lang="no">B5 - s0.4 - Kjoretoytype (karosseritype?)</documentation>
+				</annotation>
+			</element>
+			<element name="tekniskUnderkode" nillable="true" minOccurs="0" type="tns:kodeverdier"/>
+			<element name="typebetegnelse" nillable="true" minOccurs="0" type="string">
+				<annotation>
+					<documentation xml:lang="no">A11 - s0.2 - Type: eg. "1EXE"</documentation>
+				</annotation>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="maalOgVekt">
+		<sequence>
+			<element name="egenvekt" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no">Spesifikk egenvekt med forer</documentation>
+				</annotation>
+			</element>
+			<element name="egenvektMaksimum" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no">D14 - s2.6 - Maksiums egenvekt for kjoretoyet med forer</documentation>
+				</annotation>
+			</element>
+			<element name="egenvektMinimum" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no">D13 - s2.6 - Minimums egenvekt for kjoretoyet med forer</documentation>
+				</annotation>
+			</element>
+			<element name="egenvektTilhengerkopling" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no">Egenvekt for kopling nar tilhenger er tom</documentation>
+				</annotation>
+			</element>
+			<element name="nyttelast" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no">Differanse mellom totalvekt og egenvekt (med/uten forer)</documentation>
+				</annotation>
+			</element>
+			<element name="tekniskTillattForhoyetTotalvekt" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no">D15.1 s.2.8 Teknisk tillatt forhoyet totalvekt (maks)</documentation>
+				</annotation>
+			</element>
+			<element name="tekniskTillattTotalvekt" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no">Fabrikantens angitte maksimale totalvekt når kjøretøy er gitt lavere tilllatt totalvekt</documentation>
+				</annotation>
+			</element>
+			<element name="tillattTaklast" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no">D20 - s2.8.2 Tillatt taklast (maks)</documentation>
+				</annotation>
+			</element>
+			<element name="tillattTilhengervektMedBrems" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no">D27 - s2.11.6 Teknisk tillatt vekt for tilhenger med brems</documentation>
+				</annotation>
+			</element>
+			<element name="tillattTilhengervektUtenBrems" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no">D27 - s2.11.6 Teknisk tillatt vekt for tilhenger uten brems</documentation>
+				</annotation>
+			</element>
+			<element name="tillattTotalvekt" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no">D15 - s2.8 Teknisk tillatt totalvekt (maks).</documentation>
+				</annotation>
+			</element>
+			<element name="tillattVertikalKoplingslast" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no">D28 - s2.12.1 Tillatt vertikal koplingslast</documentation>
+				</annotation>
+			</element>
+			<element name="tillattVogntogvekt" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no">D26 - s2.11.4 Vogntogvekt</documentation>
+				</annotation>
+			</element>
+			<element name="vogntogvektAvhBremsesystemer" nillable="true" minOccurs="0">
+				<annotation>
+					<documentation xml:lang="no">s.2.4.4 Vogntogvekt avh. bremsesystem (Traktor)</documentation>
+				</annotation>
+				<complexType>
+					<sequence>
+						<element name="vogntogvektAvhBremsesystem" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="bredde" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no">D9 - s2.4.2.2 - Kjoretoyets storste utvendige bredde, speil ikke medregnet. Se eventuell merknad til kap. 2 i kjoretoyforskriften. Oppgis i millimeter</documentation>
+				</annotation>
+			</element>
+			<element name="lengde" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no">D7 - s2.4.2.1 - Kjoretoyets storste utvendige lengde fra forreste til bakerste punkt. Se eventuelt merknad til kap.2 i kjoretoyforskriften. Oppgis i millimeter</documentation>
+				</annotation>
+			</element>
+			<element name="hoyde" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no">D11 - s2.4.2.3 - Kjoretoyets storste utvendige hoyde. Oppgis i millimeter</documentation>
+				</annotation>
+			</element>
+			<element name="lengdeInnvendigLasteplan" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no">D8.1 - s2.4.2.1.1 - Oppgis i millimeter</documentation>
+				</annotation>
+			</element>
+			<element name="maksimalHoyde" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no"> D12 - s2.4.2.3 - Maksimumsverdi. Kjoretoyets storste utvendige hoyde. Oppgis i millimeter</documentation>
+				</annotation>
+			</element>
+			<element name="maksimalLengde" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no">D8 - s2.4.2.1 - Maximumsverdi for kjoretoyets storste utvendige lengde fra forreste til bakerste punkt. Se eventuelt merknad til kap.2 i kjoretoyforskriften. Oppgis i millimeter</documentation>
+				</annotation>
+			</element>
+			<element name="maksimalBredde" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no">D10 - s2.4.2.2 - Kjoretoyets storste utvendige bredde, speil ikke medregnet. Se eventuell merknad til kap. 2 i kjoretoyforskriften. Oppgis i millimeter</documentation>
+				</annotation>
+			</element>
+			<element name="abs" nillable="true" minOccurs="0" type="string">
+				<annotation>
+					<documentation xml:lang="no"> J1 - s.8.5 - Blokkeringsfritt bremsesystem</documentation>
+				</annotation>
+			</element>
+			<element name="bremsesystem" nillable="true" minOccurs="0" type="string">
+				<annotation>
+					<documentation xml:lang="no">7.2 - Bremsesystem (MC + Traktor)</documentation>
+				</annotation>
+			</element>
+			<element name="driftsbremsBak" nillable="true" minOccurs="0" type="string">
+				<annotation>
+					<documentation xml:lang="no">driftsbrems bak</documentation>
+				</annotation>
+			</element>
+			<element name="driftsbremsForan" nillable="true" minOccurs="0" type="string">
+				<annotation>
+					<documentation xml:lang="no">driftsbrems foran</documentation>
+				</annotation>
+			</element>
+			<element name="tilhengerBremseforbindelser" nillable="true" minOccurs="0">
+				<annotation>
+					<documentation xml:lang="no">Tilhenger bremseforbindelse (luft/mekanisk/el)</documentation>
+				</annotation>
+				<complexType>
+					<sequence>
+						<element name="tilhengerBremseforbindelse" nillable="true" minOccurs="0" maxOccurs="unbounded" type="string"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="motorOgKraftoverfoering">
+		<sequence>
+			<element name="antallGir" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no">F2 - s4.6 Antall gir</documentation>
+				</annotation>
+			</element>
+			<element name="girPlassering" nillable="true" minOccurs="0" type="string">
+				<annotation>
+					<documentation xml:lang="no">Gir plassering (hand/fot MC)</documentation>
+				</annotation>
+			</element>
+			<element name="girkassetype" nillable="true" minOccurs="0" type="tns:kodeverdier">
+				<annotation>
+					<documentation xml:lang="no">F1 - s4.5.1 Girkassetype</documentation>
+				</annotation>
+			</element>
+			<element name="giroverforingsType" nillable="true" minOccurs="0" type="string">
+				<annotation>
+					<documentation xml:lang="no">Giroverforingstype (MC)</documentation>
+				</annotation>
+			</element>
+			<element name="hybridElektriskKjoretoy" nillable="true" minOccurs="0" type="boolean">
+				<annotation>
+					<documentation xml:lang="no">E16 - s.3.4.1 - Hybrid elektrisk kjoretoy</documentation>
+				</annotation>
+			</element>
+			<element name="hybridKategori" nillable="true" minOccurs="0" type="tns:kodeverdier">
+				<annotation>
+					<documentation xml:lang="no">E17 - s.3.4.2 - Hybrid kategori</documentation>
+				</annotation>
+			</element>
+			<element name="maksimumHastighet" nillable="true" minOccurs="0">
+				<annotation>
+					<documentation xml:lang="no">F3 - s4.7 Maks hastighet. Oppgis i kilometer pr. time</documentation>
+				</annotation>
+				<complexType>
+					<sequence>
+						<element name="hastighet" nillable="true" minOccurs="0" maxOccurs="unbounded" type="integer"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="maksimumHastighetMalt" nillable="true" minOccurs="0">
+				<annotation>
+					<documentation xml:lang="no">Maks hastighet malt (traktor)</documentation>
+				</annotation>
+				<complexType>
+					<sequence>
+						<element name="hastighet" nillable="true" minOccurs="0" maxOccurs="unbounded" type="integer"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="obd" nillable="true" minOccurs="0" type="string">
+				<annotation>
+					<documentation xml:lang="no">E14 - s.3.2.12.2.7 - OBD</documentation>
+				</annotation>
+			</element>
+			<element name="totalUtvekslingHoyesteGir" nillable="true" minOccurs="0" type="float">
+				<annotation>
+					<documentation xml:lang="no"> Total utveksling i hoyeste gir (MC)</documentation>
+				</annotation>
+			</element>
+			<element name="utelukkendeElektriskDrift" nillable="true" minOccurs="0" type="boolean"/>
+			<element name="girutvekslingerPrGir" nillable="true" minOccurs="0">
+				<annotation>
+					<documentation xml:lang="no"></documentation>
+				</annotation>
+				<complexType>
+					<sequence>
+						<element name="girutvekslingPrGir" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="motorer" nillable="true" minOccurs="0" type="tns:motorer"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="miljoedata">
+		<sequence>
+			<element name="euroKlasse" nillable="true" minOccurs="0" type="tns:kodeverdier">
+				<annotation>
+					<documentation xml:lang="no">Eurolevel</documentation>
+				</annotation>
+			</element>
+			<element name="lyddemperUtblas" nillable="true" minOccurs="0" type="string">
+				<annotation>
+					<documentation xml:lang="no">Lyddemper utblas</documentation>
+				</annotation>
+			</element>
+			<element name="miljoOgdrivstoffGrupper" nillable="true" minOccurs="0" type="tns:miljoOgdrivstoffGrupper"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="annetTeknisk">
+		<sequence>
+			<element name="doerer" nillable="true" minOccurs="0">
+				<annotation>
+					<documentation xml:lang="no">K2 - s.9.3.1 - Antall dorer</documentation>
+				</annotation>
+				<complexType>
+					<sequence>
+						<element name="antallDorer" nillable="true" minOccurs="0" maxOccurs="unbounded" type="integer"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="avstandNavSkjermbueBak" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no">Avstand mellom senter nav og skjermbue - bak</documentation>
+				</annotation>
+			</element>
+			<element name="avstandNavSkjermbueForan" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no">Avstand mellom senter nav og skjermbue - foran</documentation>
+				</annotation>
+			</element>
+			<element name="bussKategori" nillable="true" minOccurs="0" type="string">
+				<annotation>
+					<documentation xml:lang="no">Busskategori</documentation>
+				</annotation>
+			</element>
+			<element name="dorUtforminger" nillable="true" minOccurs="0">
+				<annotation>
+					<documentation xml:lang="no">Dorutforming</documentation>
+				</annotation>
+				<complexType>
+					<sequence>
+						<element name="dorUtforming" nillable="true" minOccurs="0" maxOccurs="unbounded" type="string"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="fargeFjar" nillable="true" minOccurs="0" type="string">
+				<annotation>
+					<documentation xml:lang="no">Farge fjær</documentation>
+				</annotation>
+			</element>
+			<element name="karosseriArt" nillable="true" minOccurs="0" type="string">
+				<annotation>
+					<documentation xml:lang="no">C2.1.1 - Karosseriets art (MC). Tekstlig beskrivelse av karosseriet.</documentation>
+				</annotation>
+			</element>
+			<element name="hydrauliskLoft" nillable="true" minOccurs="0" type="boolean">
+				<annotation>
+					<documentation xml:lang="no">12.3 - Hydraulisk loft (trepunktskopling) ja/nei</documentation>
+				</annotation>
+			</element>
+			<element name="karosseritype" nillable="true" minOccurs="0" type="tns:kodeverdier">
+				<annotation>
+					<documentation xml:lang="no">K1 - s.9.1 - Karosseri type - Kode</documentation>
+				</annotation>
+			</element>
+			<element name="kjennemerketypeBak" nillable="true" minOccurs="0" type="tns:kodeverdier">
+				<annotation>
+					<documentation xml:lang="no">O1 - Kjennemerketype i tekniske data er førende for størrelsen på kjennemerke</documentation>
+				</annotation>
+			</element>
+			<element name="kjennemerketypeForan" nillable="true" minOccurs="0" type="tns:kodeverdier"></element>
+			<element name="kjoringSide" nillable="true" minOccurs="0" type="string">
+				<annotation>
+					<documentation xml:lang="no">1.6 - Konstruert for hoyre eller venstre kjoring? Traktor</documentation>
+				</annotation>
+			</element>
+			<element name="oppbygningUnderstellsnummer" nillable="true" minOccurs="0" type="string">
+				<annotation>
+					<documentation xml:lang="no">B4 - s0.3 - Oppbygningen av understellsnummer</documentation>
+				</annotation>
+			</element>
+			<element name="pabyggsKode" nillable="true" minOccurs="0" type="tns:kodeverdier">
+				<annotation>
+					<documentation xml:lang="no">Pabyggskode</documentation>
+				</annotation>
+			</element>
+			<element name="overhengBak" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no">Overheng bak</documentation>
+				</annotation>
+			</element>
+			<element name="passasjerHandtak" nillable="true" minOccurs="0" type="string">
+				<annotation>
+					<documentation xml:lang="no">B.1.4 - Passasjer handtak (MC)</documentation>
+				</annotation>
+			</element>
+			<element name="plasseringAvDorer" nillable="true" minOccurs="0" type="tns:kodeverdier">
+				<annotation>
+					<documentation xml:lang="no">K2.1 - s.9.3.1 - Plassering av dorer</documentation>
+				</annotation>
+			</element>
+			<element name="plasseringFabrikasjonsplater" nillable="true" minOccurs="0">
+				<annotation>
+					<documentation xml:lang="no">K8 - s.9.17.1 - Plassering av fabrikasjonsplate. Kan vare flere</documentation>
+				</annotation>
+				<complexType>
+					<sequence>
+						<element name="plasseringFabrikasjonsplate" nillable="true" minOccurs="0" maxOccurs="unbounded" type="tns:kodeverdier"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="plasseringMerkeplateTrimming" nillable="true" minOccurs="0" type="string">
+				<annotation>
+					<documentation xml:lang="no">B.1.6 - Plassering av merkeplate mot trimming (MC)</documentation>
+				</annotation>
+			</element>
+			<element name="plasseringUnderstellsnummere" nillable="true" minOccurs="0">
+				<annotation>
+					<documentation xml:lang="no"> K9 - s.9.17.1 - Plassering av understellsnummer</documentation>
+				</annotation>
+				<complexType>
+					<sequence>
+						<element name="plasseringUnderstellsnummer" nillable="true" minOccurs="0" maxOccurs="unbounded" type="tns:kodeverdier"></element>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="rFarger" nillable="true" minOccurs="0">
+				<annotation>
+					<documentation xml:lang="no"> R-Farge. Repeterende felt. COC lagrer kun en verdi her.</documentation>
+				</annotation>
+				<complexType>
+					<sequence>
+						<element name="rFarge" nillable="true" minOccurs="0" maxOccurs="unbounded" type="tns:kodeverdier"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="vendbarForerplass" nillable="true" minOccurs="0" type="boolean">
+				<annotation>
+					<documentation xml:lang="no">1.4 - Vendbar forerplass (Ja/nei pa traktor)</documentation>
+				</annotation>
+			</element>
+			<element name="temperaturregulertSkap" nillable="true" minOccurs="0" type="boolean">
+				<annotation>
+					<documentation xml:lang="no">Temperaturregulert skap ja/nei</documentation>
+				</annotation>
+			</element>
+			<element name="styremekanismeArt" nillable="true" minOccurs="0" type="string">
+				<annotation>
+					<documentation xml:lang="no">Styremekanismens art (MC + Traktor)</documentation>
+				</annotation>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="sitteOgStaaplasser">
+		<sequence>
+			<element name="bareplasser" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no">Antall godkjente bareplasser. Bareplasser skal medregnes i det antall kjoretoyet registreres for</documentation>
+				</annotation>
+			</element>
+			<element name="rullestolplasser" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no">Antall godkjente rullestolplasser. Rullstolplasser skal medregnes i det antall kjoretoyet registreres for</documentation>
+				</annotation>
+			</element>
+			<element name="sitteplasser" nillable="true" minOccurs="0" type="tns:sitteplasser"/>
+			<element name="sitteplasserForan" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no">ntall sitteplasser i forste seterad oppgitt av fabrikant</documentation>
+				</annotation>
+			</element>
+			<element name="sitteplasserStillstand" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no">Antall sitteplasser beregnet til bruk ved stillstand</documentation>
+				</annotation>
+			</element>
+			<element name="sitteplasserTotalt" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no">K3 - s.9.10.3.1 - Antall sitteplasser totalt oppgitt av fabrikant. Kjoretoyet kan dog ikke godkjennes for storre antall personer enn det kjoretoyet har nytte for</documentation>
+				</annotation>
+			</element>
+			<element name="staplasser" nillable="true" minOccurs="0" type="integer">
+				<annotation>
+					<documentation xml:lang="no">Antall godkjente staplasser. Kjoretoyet kan dog ikke godkjennes for storre antall personer enn det kjoretoyet har nyttelast for</documentation>
+				</annotation>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="tilhengerkopling">
+		<sequence>
+			<element name="koplinger" nillable="true" minOccurs="0" type="tns:koplinger"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="akselinformasjon">
+		<sequence>
+			<element name="akselGrupper" nillable="true" minOccurs="0" type="tns:akselGrupper"/>
+			<element name="antallAksler" nillable="true" minOccurs="0" type="integer" />
+		</sequence>
+	</complexType>
+
+	<complexType name="dekkOgFelgtype">
+		<sequence>
+			<element name="akselDekkOgFelgKombinasjon" nillable="true" minOccurs="0" maxOccurs="unbounded" type="tns:akselDekkOgFelgKombinasjon"/>
+		</sequence>
+	</complexType>
+
+	<!-- Subelements -->
+	<complexType name="eierskap">
+		<sequence>
+			<element name="fodselsnummer" nillable="true" minOccurs="0" type="string"/>
+			<element name="fodselsdato" nillable="true" minOccurs="0" type="date"/>
+			<element name="etternavn" nillable="true" minOccurs="0" type="string"/>
+			<element name="fornavn" nillable="true" minOccurs="0" type="string"/>
+			<element name="mellomnavn" nillable="true" minOccurs="0" type="string"/>
+			<element name="organisasjonsnavn" nillable="true" minOccurs="0" type="string"/>
+			<element name="organisasjonsnummer" nillable="true" minOccurs="0" type="string"/>
+			<element name="adresselinje1" nillable="true" minOccurs="0" type="string"/>
+			<element name="adresselinje2" nillable="true" minOccurs="0" type="string"/>
+			<element name="adresselinje3" nillable="true" minOccurs="0" type="string"/>
+			<element name="postnummer" nillable="true" minOccurs="0" type="string"/>
+			<element name="poststed" nillable="true" minOccurs="0" type="string"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="eierskapoppslag">
+		<sequence>
+			<element name="fodselsnummer" nillable="true" minOccurs="0" type="string"/>
+			<element name="fodselsdato" nillable="true" minOccurs="0" type="date"/>
+			<element name="etternavn" nillable="true" minOccurs="0" type="string"/>
+			<element name="fornavn" nillable="true" minOccurs="0" type="string"/>
+			<element name="mellomnavn" nillable="true" minOccurs="0" type="string"/>
+			<element name="organisasjonsnavn" nillable="true" minOccurs="0" type="string"/>
+			<element name="organisasjonsnummer" nillable="true" minOccurs="0" type="string"/>
+			<element name="adresselinje1" nillable="true" minOccurs="0" type="string"/>
+			<element name="adresselinje2" nillable="true" minOccurs="0" type="string"/>
+			<element name="adresselinje3" nillable="true" minOccurs="0" type="string"/>
+			<element name="postnummer" nillable="true" minOccurs="0" type="string"/>
+			<element name="poststed" nillable="true" minOccurs="0" type="string"/>
+			<element name="fomTidspunkt" nillable="true" minOccurs="0" type="string"/>
+			<element name="tilTidspunkt" nillable="true" minOccurs="0" type="string"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="eierskaphistorikk">
+		<sequence>
+			<element name="fodselsnummer" nillable="true" minOccurs="0" type="string"/>
+			<element name="etternavn" nillable="true" minOccurs="0" type="string"/>
+			<element name="fornavn" nillable="true" minOccurs="0" type="string"/>
+			<element name="mellomnavn" nillable="true" minOccurs="0" type="string"/>
+			<element name="organisasjonsnavn" nillable="true" minOccurs="0" type="string"/>
+			<element name="organisasjonsnummer" nillable="true" minOccurs="0" type="string"/>
+			<element name="adresselinje1" nillable="true" minOccurs="0" type="string"/>
+			<element name="adresselinje2" nillable="true" minOccurs="0" type="string"/>
+			<element name="adresselinje3" nillable="true" minOccurs="0" type="string"/>
+			<element name="postnummer" nillable="true" minOccurs="0" type="string"/>
+			<element name="poststed" nillable="true" minOccurs="0" type="string"/>
+			<element name="adressestatus" minOccurs="0" type="tns:kodeverdier"/>
+			<element name="periode" minOccurs="0" type="tns:periode"/>
+		</sequence>
+	</complexType>
+
+	<!--	<fodselsnummer>string</fodselsnummer>-->
+	<!--	<etternavn>string</etternavn>-->
+	<!--	<fornavn>string</fornavn>-->
+	<!--	<mellomnavn>string</mellomnavn>-->
+	<!--	<organisasjonsnavn>string</organisasjonsnavn>-->
+	<!--	<organisasjonsnummer>string</organisasjonsnummer>-->
+	<!--	<adresselinje1>string</adresselinje1>-->
+	<!--	<adresselinje2>string</adresselinje2>-->
+	<!--	<adresselinje3>string</adresselinje3>-->
+	<!--	<postnummer>string</postnummer>-->
+	<!--	<poststed>string</poststed>-->
+	<!--	<adressestatus>-->
+	<!--		<kodeNavn>string</kodeNavn>-->
+	<!--		<kodeVerdi>string</kodeVerdi>-->
+	<!--		<kodeBeskrivelse>string</kodeBeskrivelse>-->
+	<!--		<kodeTypeId>string</kodeTypeId>-->
+	<!--		<tidligereKodeVerdier>-->
+	<!--			<kodeVerdi>string</kodeVerdi>-->
+	<!--		</tidligereKodeVerdier>-->
+	<!--	</adressestatus>-->
+	<!--	<periode>-->
+	<!--		<fomTidspunkt>2020-05-07T08:38:51.973Z</fomTidspunkt>-->
+	<!--		<sistEndretTidspunkt>2020-05-07T08:38:51.973Z</sistEndretTidspunkt>-->
+	<!--		<tilTidspunkt>2020-05-07T08:38:51.973Z</tilTidspunkt>-->
+	<!--	</periode>-->
+
+	<complexType name="sok">
+		<sequence>
+			<element name="kjennemerke" nillable="true" minOccurs="0" type="string"/>
+			<element name="merke" nillable="true" minOccurs="0" type="string"/>
+			<element name="modellaar" nillable="true" minOccurs="0" type="string"/>
+			<element name="fodselsdato" nillable="true" minOccurs="0" type="date"/>
+			<element name="etternavn" nillable="true" minOccurs="0" type="string"/>
+			<element name="fornavn" nillable="true" minOccurs="0" type="string"/>
+			<element name="mellomnavn" nillable="true" minOccurs="0" type="string"/>
+			<element name="organisasjonsnavn" nillable="true" minOccurs="0" type="string"/>
+			<element name="organisasjonsnummer" nillable="true" minOccurs="0" type="string"/>
+			<element name="adresselinje1" nillable="true" minOccurs="0" type="string"/>
+			<element name="postnummer" nillable="true" minOccurs="0" type="string"/>
+			<element name="poststed" nillable="true" minOccurs="0" type="string"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="motorer">
+		<sequence>
+			<element name="motor" nillable="true" minOccurs="0" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="antallSylindre" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation xml:lang="no">E3 - s.3.2.1.2 - Antall sylindre</documentation>
+							</annotation>
+						</element>
+						<element name="arbeidsprinsipp" nillable="true" minOccurs="0" type="tns:kodeverdier">
+							<annotation>
+								<documentation xml:lang="no">E2 - s.3.2.1.1 - Arbeidsprinsip</documentation>
+							</annotation>
+						</element>
+						<element name="avgassResirkulering" nillable="true" minOccurs="0" type="boolean">
+							<annotation>
+								<documentation xml:lang="no">E12 - s.3.2.12.2.4 - Avgass resirkulering</documentation>
+							</annotation>
+						</element>
+						<element name="fabrikant" nillable="true" minOccurs="0" type="string">
+							<annotation>
+								<documentation xml:lang="no">Motorfabrikant (MC)</documentation>
+							</annotation>
+						</element>
+						<element name="fordampningsutslippKontrollSystem" nillable="true" minOccurs="0" type="boolean">
+							<annotation>
+								<documentation xml:lang="no">E12.1 - s.3.2.12.2.5 - Fordampningsutslipkontroll system</documentation>
+							</annotation>
+						</element>
+						<element name="katalysator" nillable="true" minOccurs="0" type="boolean">
+							<annotation>
+								<documentation xml:lang="no">E10 - 3.2.12.2.1 - Katalysator</documentation>
+							</annotation>
+						</element>
+						<element name="kjolesystem" nillable="true" minOccurs="0" type="string"/>
+						<element name="ladeluftkjoler" nillable="true" minOccurs="0" type="boolean">
+							<annotation>
+								<documentation xml:lang="no"> E9.1 - s.3.2.8.2 - Ladeluftkjoler (intercooler)</documentation>
+							</annotation>
+						</element>
+						<element name="luftInnsproytning" nillable="true" minOccurs="0" type="boolean">
+							<annotation>
+								<documentation xml:lang="no">E11 - s.3.2.12.2.3 - Luftinnsproytning</documentation>
+							</annotation>
+						</element>
+						<element name="motorKode" nillable="true" minOccurs="0" type="string">
+							<annotation>
+								<documentation xml:lang="no">E1 - s.3.1.1 - Motorkode</documentation>
+							</annotation>
+						</element>
+						<element name="motorNummer" nillable="true" minOccurs="0" type="string"/>
+						<element name="oksygenSensor" nillable="true" minOccurs="0" type="boolean">
+							<annotation>
+								<documentation xml:lang="no">E10.1 - 3.2.12.2.2 - Oksygen sensor (lambda sonde)</documentation>
+							</annotation>
+						</element>
+						<element name="overladet" nillable="true" minOccurs="0" type="boolean">
+							<annotation>
+								<documentation xml:lang="no">E9 - s.3.2.8.1 - Overladet (Turbo, kompressor etc)</documentation>
+							</annotation>
+						</element>
+						<element name="partikkelfilterMotor" nillable="true" minOccurs="0" type="boolean">
+							<annotation>
+								<documentation xml:lang="no">E13 - s.3.2.12.2.6 - Partikkelfilter</documentation>
+							</annotation>
+						</element>
+						<element name="slagvolum" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation xml:lang="no"> E5 - s.3.2.1.3 - Slagvolum i kubikkcentimeter</documentation>
+							</annotation>
+						</element>
+						<element name="sylinderArrangement" nillable="true" minOccurs="0" type="tns:kodeverdier">
+							<annotation>
+								<documentation xml:lang="no">E4 - s.3.2.1.2 - Sylinder arrangement</documentation>
+							</annotation>
+						</element>
+						<element name="drivstoff" nillable="true" minOccurs="0" type="tns:drivstoff"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="drivstoff">
+		<sequence>
+			<element name="drivstofftype" nillable="true" minOccurs="0" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="drivstoffKode" nillable="true" minOccurs="0" type="tns:kodeverdier">
+							<annotation>
+								<documentation xml:lang="no">E8 - s.3.2.2 - Drivstoffkode</documentation>
+							</annotation>
+						</element>
+						<element name="effektVektForhold" nillable="true" minOccurs="0" type="float">
+							<annotation>
+								<documentation xml:lang="en">Power - weight ratio</documentation>
+							</annotation>
+						</element>
+						<element name="maksNettoEffekt" nillable="true" minOccurs="0" type="float">
+							<annotation>
+								<documentation xml:lang="no">E6 - s.3.2.1.8 - Maks nettoeffekt i kW</documentation>
+							</annotation>
+						</element>
+						<element name="maksNettoEffektVedOmdreiningstallMin1" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation xml:lang="no">E7 - s.3.2.1.8 - Maks nettoeffekt i kW ved omdreiningstall Min-1</documentation>
+							</annotation>
+						</element>
+						<element name="maksNettoEffektVedOmdreiningstallMin1Maks" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation xml:lang="no">E7.1 - s.3.2.1.8 - Maks nettoeffekt i kW ved omdreiningstall Min-1 (Maks)</documentation>
+							</annotation>
+						</element>
+						<element name="maksEffektPrTime" nillable="true" minOccurs="0" type="float">
+							<annotation>
+								<documentation xml:lang="no">E15 - s.3.3.1.1 - Maks effekt i kW pr time</documentation>
+							</annotation>
+						</element>
+						<element name="spenning" nillable="true" minOccurs="0" type="float">
+							<annotation>
+								<documentation xml:lang="no">Spenning i volt</documentation>
+							</annotation>
+						</element>
+						<element name="tomgangsOmdreiningstall" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation xml:lang="no">E5.1 - s.3.2.1.6 - Tomgangs omdreiningstall</documentation>
+							</annotation>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="miljoOgdrivstoffGrupper">
+		<sequence>
+			<element name="miljoOgdrivstoffGruppe" nillable="true" minOccurs="0" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="drivstoffKodeMiljodata" nillable="true" minOccurs="0" type="tns:kodeverdier">
+							<annotation>
+								<documentation xml:lang="no">Angir drivstoffkode for disse miljodata</documentation>
+							</annotation>
+						</element>
+						<element name="kjorestoy" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation xml:lang="no"> L1 - t.1 - Kjorestoy i db</documentation>
+							</annotation>
+						</element>
+						<element name="standstoy" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation xml:lang="no">L2 - t.1 - Standstoy i db</documentation>
+							</annotation>
+						</element>
+						<element name="innvendigStoyniva" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation xml:lang="no">Oppgis i dB (A)</documentation>
+							</annotation>
+						</element>
+						<element name="stoyMalingOppgittAv" nillable="true" minOccurs="0" type="tns:kodeverdier"/>
+						<element name="vedAntallOmdreininger" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation xml:lang="no">L2.1 - t.1 - Ved omdreiningstall (pr. min)</documentation>
+							</annotation>
+						</element>
+						<element name="forbrukOgUtslipp" nillable="true" minOccurs="0" type="tns:forbrukOgUtslipp">
+							<annotation>
+								<documentation xml:lang="no">Kjorestoy i db</documentation>
+							</annotation>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="forbrukOgUtslipp">
+		<sequence>
+			<element name="ettForbrukOgUtslipp" nillable="true" minOccurs="0" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="wltpKjoretoyspesifikk" nillable="true" minOccurs="0" type="tns:wltpKjoretoyspesifikk"/>
+						<element name="drivstoffKode" nillable="true" minOccurs="0" type="tns:kodeverdier"/>
+						<element name="antallPartikler" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation xml:lang="no">antall partikler</documentation>
+							</annotation>
+						</element>
+                        <element name="co2BlandetKjoring" nillable="true" minOccurs="0" type="float">
+                            <annotation>
+                                <documentation xml:lang="no">Utslipp CO2 ved blandet kjoring</documentation>
+                            </annotation>
+                        </element>
+                        <element name="co2Bykjoring" nillable="true" minOccurs="0" type="float">
+                            <annotation>
+                                <documentation xml:lang="no">N3.1 - t.3 - Utslipp CO2 ved bykjoring</documentation>
+                            </annotation>
+                        </element>
+						<element name="co2Landeveiskjoring" nillable="true" minOccurs="0" type="float">
+							<annotation>
+								<documentation xml:lang="no">N3.2 - t.3 - Utslipp CO2 ved landeveiskjoring</documentation>
+							</annotation>
+						</element>
+                        <element name="elEnergiforbruk" nillable="true" minOccurs="0" type="float">
+                            <annotation>
+                                <documentation xml:lang="no">Elektrisk energiforbruk</documentation>
+                            </annotation>
+                        </element>
+                        <element name="forbrukBlandetKjoring" nillable="true" minOccurs="0" type="float">
+                            <annotation>
+                                <documentation xml:lang="no">Forbruk blandet kjoring</documentation>
+                            </annotation>
+                        </element>
+						<element name="forbrukBykjoring" nillable="true" minOccurs="0" type="float">
+							<annotation>
+								<documentation xml:lang="no">N1 - t.3 - Forbruk bykjoring</documentation>
+							</annotation>
+						</element>
+						<element name="forbrukLandeveiskjoring" nillable="true" minOccurs="0" type="float">
+							<annotation>
+								<documentation xml:lang="no">N2 - t.3 - Forbruk landeveiskjoring</documentation>
+							</annotation>
+						</element>
+						<element name="malemetode" nillable="true" minOccurs="0" type="tns:kodeverdier"/>
+						<element name="partikkelfilterFabrikkmontert" nillable="true" minOccurs="0" type="boolean">
+							<annotation>
+								<documentation xml:lang="no">kryss av dersom det finnes fabrikkmontert partikkelfilter</documentation>
+							</annotation>
+						</element>
+						<element name="partikkelfilterUtslipp" nillable="true" minOccurs="0" type="boolean"/>
+                        <element name="rekkeviddeKm" nillable="true" minOccurs="0" type="float">
+                            <annotation>
+                                <documentation xml:lang="no">Rekkevidde (km)</documentation>
+                            </annotation>
+                        </element>
+                        <element name="utslippKorrigertAbsorpsjonskoeffisient" nillable="true" minOccurs="0" type="float">
+                            <annotation>
+                                <documentation xml:lang="no">Utslipp - korrigert absorpsjonskoeffisient</documentation>
+                            </annotation>
+                        </element>
+						<element name="utslippNOxGPrKWh" nillable="true" minOccurs="0" type="float">
+							<annotation>
+								<documentation xml:lang="no">NOx i g/kWh (Traktor)</documentation>
+							</annotation>
+						</element>
+						<element name="utslippCOmgPrKm" nillable="true" minOccurs="0" type="float">
+							<annotation>
+								<documentation xml:lang="no">M6 - t.3 - CO i mg/km - TestTypeIEuro5_6 og TestTypeI - M1 - t.2 - CO i g/km (NB husk a konvertere)</documentation>
+							</annotation>
+						</element>
+						<element name="utslippNMHCmgPrKm" nillable="true" minOccurs="0" type="float">
+							<annotation>
+								<documentation xml:lang="no">M8 - t.3 - NMHC i mg/km - TestTypeIEuro5_6</documentation>
+							</annotation>
+						</element>
+						<element name="utslippNOxMgPrKm" nillable="true" minOccurs="0" type="float">
+							<annotation>
+								<documentation xml:lang="no">M9 - t.3 - NOx i mg/km - TestTypeIEuro5_6 og TestTypeI - M3 - t.2 - NOx i g/km- NB husk a gjore om fra g til mg</documentation>
+							</annotation>
+						</element>
+						<element name="utslippTHCmgPrKm" nillable="true" minOccurs="0" type="float">
+							<annotation>
+								<documentation xml:lang="no">M7 - t.3 - THC i mg/km - TestTypeIEuro5_6</documentation>
+							</annotation>
+						</element>
+						<element name="utslippPartikkelAntallPrKm" nillable="true" minOccurs="0" type="float">
+							<annotation>
+								<documentation xml:lang="no">M12 - t.3 - Partikler i #/km (antall/km) - TestTypeIEuro5_6</documentation>
+							</annotation>
+						</element>
+						<element name="utslippPartiklerGPrKWh" nillable="true" minOccurs="0" type="float">
+							<annotation>
+								<documentation xml:lang="no">Partikkel i g/kWh (Traktor)</documentation>
+							</annotation>
+						</element>
+						<element name="utslippPartiklerMgPrKm" nillable="true" minOccurs="0" type="float">
+							<annotation>
+								<documentation xml:lang="no">M11 - t.3 - Partikkelutslipp i mg/km - TestTypeIEuro5_6 og TestTypeI - M5 - t.2 - Partikkel i g/km - NB husk a konvertere g til mg</documentation>
+							</annotation>
+						</element>
+						<element name="utslippTHCogNOxMgPrKm" nillable="true" minOccurs="0" type="float">
+							<annotation>
+								<documentation xml:lang="no">10 - t.3 - THC og NOx i mg/km - TestTypeIEuro5_6</documentation>
+							</annotation>
+						</element>
+                        <element name="vektetKombinertDrivstoff" nillable="true" minOccurs="0" type="float">
+                            <annotation>
+                                <documentation xml:lang="no">Vektet kombinert drivstoff</documentation>
+                            </annotation>
+                        </element>
+                        <element name="vektetKombinertDrivstoffCO2" nillable="true" minOccurs="0" type="float">
+                            <annotation>
+                                <documentation xml:lang="no">Vektet kombinert drivstoff CO2</documentation>
+                            </annotation>
+                        </element>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="wltpKjoretoyspesifikk">
+		<sequence>
+			<element name="co2EkstraHoy" nillable="true" minOccurs="0" type="string"/>
+            <element name="co2Hoy" nillable="true" minOccurs="0" type="string"/>
+            <element name="co2Kombinert" nillable="true" minOccurs="0" type="string"/>
+            <element name="co2Lav" nillable="true" minOccurs="0" type="string"/>
+            <element name="co2Middels" nillable="true" minOccurs="0" type="string"/>
+            <element name="co2VektetKombinert" nillable="true" minOccurs="0" type="string"/>
+            <element name="forbrukEkstraHoy" nillable="true" minOccurs="0" type="string"/>
+            <element name="forbrukHoy" nillable="true" minOccurs="0" type="string"/>
+            <element name="forbrukKombinert" nillable="true" minOccurs="0" type="string"/>
+            <element name="forbrukLav" nillable="true" minOccurs="0" type="string"/>
+            <element name="forbrukMiddels" nillable="true" minOccurs="0" type="string"/>
+			<element name="forbrukVektetKombinert" nillable="true" minOccurs="0" type="string"/>
+			<element name="rekkeviddeKmBlandetkjoring" nillable="true" minOccurs="0" type="string"/>
+			<element name="rekkeviddeKmBykjoring" nillable="true" minOccurs="0" type="string"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="sitteplasser">
+		<sequence>
+			<element name="sitteplass" nillable="true" minOccurs="0" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="beltestrammer" nillable="true" minOccurs="0" type="boolean">
+							<annotation>
+								<documentation>K7 - s.9.12.2 - Kollisjonspute side</documentation>
+							</annotation>
+						</element>
+						<element name="frontairbag" nillable="true" minOccurs="0" type="boolean">
+							<annotation>
+								<documentation> K5 - s.9.12.2 - Kollisjonspute foran</documentation>
+							</annotation>
+						</element>
+						<element name="hodegardinairbag" nillable="true" minOccurs="0" type="boolean">
+							<annotation>
+								<documentation>K7.1 - s.9.12.2 - Hodekollisjons gardin</documentation>
+							</annotation>
+						</element>
+						<element name="kneairbag" nillable="true" minOccurs="0" type="boolean">
+							<annotation>
+								<documentation>K7.2 - s.9.12.2 - Kollisjonspute for knar</documentation>
+							</annotation>
+						</element>
+						<element name="posisjon" nillable="true" minOccurs="0" type="string">
+							<annotation>
+								<documentation>K4 - s.9.10.3.2 - Plassering av sitteplasser (Left - center - right)</documentation>
+							</annotation>
+						</element>
+						<element name="rad" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation>K4 - s.9.10.3.2 - Plassering av sitteplasser - Rad</documentation>
+							</annotation>
+						</element>
+						<element name="sideairbag" nillable="true" minOccurs="0" type="boolean">
+							<annotation>
+								<documentation>K6 - s.9.12.2 - Kollisjonspute side</documentation>
+							</annotation>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="koplinger">
+		<sequence>
+			<element name="kopling" nillable="true" minOccurs="0" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="avstandSenterKoplingTilForsteAksel" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation>Avstand fra kopling til forste aksel. O grupper</documentation>
+							</annotation>
+						</element>
+						<element name="avstandSisteAkselTilSenterKopling" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation> Avstand fra siste aksel til kopling. Oppgis i millimeter</documentation>
+							</annotation>
+						</element>
+						<element name="belastningDverdi" nillable="true" minOccurs="0" type="float">
+							<annotation>
+								<documentation>45.1 - Tilhenger koplings D-verdi</documentation>
+							</annotation>
+						</element>
+						<element name="belastningSverdi" nillable="true" minOccurs="0" type="float">
+							<annotation>
+								<documentation>45.1 - Tilhenger koplings S-verdi</documentation>
+							</annotation>
+						</element>
+						<element name="belastningVverdi" nillable="true" minOccurs="0" type="float">
+							<annotation>
+								<documentation>45.1 - Tilhenger koplings V-verdi</documentation>
+							</annotation>
+						</element>
+						<element name="fabrikantKopling" nillable="true" minOccurs="0" type="string">
+							<annotation>
+								<documentation>12.2.2 - Fabrikant</documentation>
+							</annotation>
+						</element>
+						<element name="type" nillable="true" minOccurs="0" type="tns:kodeverdier">
+							<annotation>
+								<documentation>12.2.1 - 36934 - Koplingstype</documentation>
+							</annotation>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="akselGrupper">
+		<sequence>
+			<element name="akselGruppe" nillable="true" minOccurs="0" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="aksler" nillable="true" minOccurs="0" type="tns:aksler" />
+						<element name="fordelingAvTillattTotalvektAkselGruppeMaks" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation>D17 - s.2.8.1 - Fordeling av tillatt totalvekt for akselgruppe - Maks</documentation>
+							</annotation>
+						</element>
+						<element name="fordelingAvTillattTotalvektAkselGruppeMin" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation>D16 - s.2.8.1 - Fordeling av tillatt totalvekt for akselgruppe - Min</documentation>
+							</annotation>
+						</element>
+						<element name="egenvektAkselGruppe" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation>Egenvekt for akselgruppe - spesifikk</documentation>
+							</annotation>
+						</element>
+						<element name="egenvektAkselGruppeMin" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation>D14.1 - s.2.6.1.1 - Egenvekt for akselgruppe - Min</documentation>
+							</annotation>
+						</element>
+						<element name="id" nillable="true" minOccurs="0" type="integer"/>
+						<element name="plasseringAkselGruppe" nillable="true" minOccurs="0" type="string">
+							<annotation>
+								<documentation>C5.1 og C4 s.1.3.3 og s.1.3.2 - Plassering av akselgruppe</documentation>
+							</annotation>
+						</element>
+						<element name="tekniskTillattAkselGruppeLast" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation>D21 - s.2.9 - Teknisk tillatt aksellast</documentation>
+							</annotation>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="aksler">
+		<sequence>
+			<element name="aksel" nillable="true" minOccurs="0" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="antallHjul" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation>C2 - s.1.3 - Antall hjul pa akselniva. Iterer for totalt antall</documentation>
+							</annotation>
+						</element>
+						<element name="avstandTilNesteAksling" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation>D1 og D2 - s.2.1 - Akselavstander Oppgis i mm</documentation>
+							</annotation>
+						</element>
+						<element name="bremseAksel" nillable="true" minOccurs="0" type="boolean">
+							<annotation>
+								<documentation>s.1.1.4 - Bremsende Aksel? Iterer for totalt antall. Plassering under. Gjelder for traktor</documentation>
+							</annotation>
+						</element>
+						<element name="drivAksel" nillable="true" minOccurs="0" type="boolean">
+							<annotation>
+								<documentation>C5 og C5.1 - s.1.3.3 - Aksel med driv. Iterer for totalt antall. Plassering under</documentation>
+							</annotation>
+						</element>
+						<element name="egenvektAksel" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation>Egenvekt for aksel - spesifikk</documentation>
+							</annotation>
+						</element>
+						<element name="egenvektAkselMin" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation>D14.1 - s.2.6.1.1 - Egenvekt for aksel - Min</documentation>
+							</annotation>
+						</element>
+						<element name="fordelingAvTillattTotalvektAkselMaks" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation>D17 - s.2.8.1 - Fordeling av tillatt totalvekt for aksel - Maks</documentation>
+							</annotation>
+						</element>
+						<element name="fordelingAvTillattTotalvektAkselMin" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation>D16 - s.2.8.1 - Fordeling av tillatt totalvekt for aksel - Min</documentation>
+							</annotation>
+						</element>
+						<element name="id" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation>D21 - s.2.9 - Teknisk tillatt aksellast</documentation>
+							</annotation>
+						</element>
+						<element name="luftfjaering" nillable="true" minOccurs="0" type="boolean" />
+						<element name="maksimalSporvidde" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation> D5 og D6 - s.2.3.2 - Sporvidde maks</documentation>
+							</annotation>
+						</element>
+						<element name="minAvstandTilNesteAksling" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation>D1 og D2 - s.2.1 - Akselavstander Oppgis i mm</documentation>
+							</annotation>
+						</element>
+						<element name="minimalSporvidde" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation>Sporvidde minimum</documentation>
+							</annotation>
+						</element>
+						<element name="plasseringAksel" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation>C5.1 og C4 s.1.3.3 og s.1.3.2 - Plassering av aksel</documentation>
+							</annotation>
+						</element>
+						<element name="styreAksel" nillable="true" minOccurs="0" type="boolean">
+							<annotation>
+								<documentation>C3 og C4 - s.1.3.2 - Aksel med styring? Iterer for totalt antall. Plassering under</documentation>
+							</annotation>
+						</element>
+						<element name="tekniskTillattAkselLast" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation>D21 - s.2.9 - Teknisk tillatt aksellast</documentation>
+							</annotation>
+						</element>
+						<element name="tekniskTillattAkselLastForhoyet" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation>D22.1 - s.2.9 - Teknisk tillatt aksellast forhoyet</documentation>
+							</annotation>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="akselDekkOgFelgKombinasjon">
+		<sequence>
+			<element name="akslerDekkOgFelg" nillable="true" minOccurs="0" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="akselDekkOgFelg" nillable="true" minOccurs="0" maxOccurs="unbounded">
+							<complexType>
+								<sequence>
+									<element name="akselId" nillable="true" minOccurs="0" type="integer">
+										<annotation>
+											<documentation>Aksel ID</documentation>
+										</annotation>
+									</element>
+									<element name="belastningskodeDekk" nillable="true" minOccurs="0" type="string">
+										<annotation>
+											<documentation>H1-75 - s.6.6.1.1.1 - "load"</documentation>
+										</annotation>
+									</element>
+									<element name="dekkdimensjon" nillable="true" minOccurs="0" type="string">
+										<annotation>
+											<documentation>H1-75 - s.6.6.1.1.1 - "size" eks. 205/60R16</documentation>
+										</annotation>
+									</element>
+									<element name="felgdimensjon" nillable="true" minOccurs="0" type="string">
+										<annotation>
+											<documentation>H1-75 - s.6.6.1.1.1 - "rimsize" eks. 7.0JX16</documentation>
+										</annotation>
+									</element>
+									<element name="hastighetskodeDekk" nillable="true" minOccurs="0" type="string">
+										<annotation>
+											<documentation>H1-75 - s.6.6.1.1.1 - "speed" eks. 91V</documentation>
+										</annotation>
+									</element>
+									<element name="innpress" nillable="true" minOccurs="0" type="string">
+										<annotation>
+											<documentation>H1-75 - s.6.6.1.1.1 - eks. 55</documentation>
+										</annotation>
+									</element>
+									<element name="tillattAkselLastTraktor" nillable="true" minOccurs="0" type="integer">
+										<annotation>
+											<documentation>Tillatt aksellast for denne dekkdimensjonen (Traktor)</documentation>
+										</annotation>
+									</element>
+									<element name="tvilling" nillable="true" minOccurs="0" type="boolean">
+										<annotation>
+											<documentation>Aksel ID</documentation>
+										</annotation>
+									</element>
+								</sequence>
+							</complexType>
+						</element>
+						<element name="tillattTotalvektTraktor" nillable="true" minOccurs="0" type="integer">
+							<annotation>
+								<documentation>Tillatt totalvekt for dekkdimensjoner (Traktor)</documentation>
+							</annotation>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="kodeverdier">
+		<sequence>
+			<element name="kodeNavn" nillable="true" minOccurs="0" type="string"/>
+			<element name="kodeVerdi" nillable="true" minOccurs="0" type="string"/>
+			<element name="kodeBeskrivelse" nillable="true" minOccurs="0" type="string"/>
+			<element name="kodeTypeId" nillable="true" minOccurs="0" type="string"/>
+			<element name="tidligereKodeVerdier" nillable="true" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="kodeVerdi" nillable="true" minOccurs="0" type="string" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="kryssbytte">
+		<sequence>
+			<element name="kryssbyttetMedKuid" nillable="true" minOccurs="0" type="string"/>
+			<element name="periode" nillable="true" minOccurs="0" type="tns:periode"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="periode">
+		<sequence>
+			<element name="fomTidspunkt" nillable="true" minOccurs="0" type="string"/>
+			<element name="sistEndretTidspunkt" nillable="true" minOccurs="0" type="string"/>
+			<element name="tilTidspunkt" nillable="true" minOccurs="0" type="string"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="avgiftskode">
+		<sequence>
+			<element name="kodeNavn" nillable="true" minOccurs="0" type="string"/>
+			<element name="kodeVerdi" nillable="true" minOccurs="0" type="string"/>
+			<element name="kodeBeskrivelse" nillable="true" minOccurs="0" type="string"/>
+			<element name="tidligereKodeVerdier" nillable="true" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="kodeVerdi" nillable="true" minOccurs="0" type="string" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="registreringsstatus">
+		<sequence>
+			<element name="fomTidspunkt" nillable="true" minOccurs="0" type="dateTime"/>
+			<element name="tilTidspunkt" nillable="true" minOccurs="0" type="dateTime"/>
+			<element name="registrertForstegangNorgeDato" nillable="true" minOccurs="0" type="date"/>
+			<element name="kodeNavn" nillable="true" minOccurs="0" type="string"/>
+			<element name="kodeVerdi" nillable="true" minOccurs="0" type="string"/>
+			<element name="kodeBeskrivelse" nillable="true" minOccurs="0" type="string"/>
+			<element name="tidligereKodeVerdier" nillable="true" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="kodeVerdi" nillable="true" minOccurs="0" type="string" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="kjoretoymerknad">
+		<sequence>
+			<element name="merknad" nillable="true" minOccurs="0" type="string"/>
+			<element name="merknadtypeKode" nillable="true" minOccurs="0" type="string"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="registreringsbegrensning">
+		<sequence>
+			<element name="kodeBeskrivelse" nillable="true" minOccurs="0" type="string"/>
+			<element name="kodeVerdi" nillable="true" minOccurs="0" type="string"/>
+		</sequence>
+	</complexType>
+
+	<simpleType name="SearchType">
+		<annotation>
+			<documentation xml:lang="no">Datatype (ssn, chassis, registration-number, company)</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="ssn"/>
+			<enumeration value="chassis"/>
+			<enumeration value="registration-number"/>
+			<enumeration value="company"/>
+		</restriction>
+	</simpleType>
+
+</schema>
