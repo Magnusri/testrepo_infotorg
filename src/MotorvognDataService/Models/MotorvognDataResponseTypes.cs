@@ -312,7 +312,7 @@ public class MotorOgKraftoverfoering
 
 public class MaksimumHastighetType
 {
-    [XmlElement(ElementName = "hastighet", IsNullable = true)]
+    [XmlElement(ElementName = "hastighet")]
     public int[]? Hastighet { get; set; }
 }
 
@@ -680,7 +680,7 @@ public class AnnetTeknisk
 
 public class DoererType
 {
-    [XmlElement(ElementName = "antallDorer", IsNullable = true)]
+    [XmlElement(ElementName = "antallDorer")]
     public int[]? AntallDorer { get; set; }
 }
 
