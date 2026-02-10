@@ -36,6 +36,7 @@ public class Kodeverdier
     [XmlElement(ElementName = "tidligereKodeVerdier", IsNullable = true)]
     public TidligereKodeVerdierType? TidligereKodeVerdier { get; set; }
 
+    [XmlType(TypeName = "KodeverdierTidligereKodeVerdierType", Namespace = MotorvognConstants.Namespace)]
     public class TidligereKodeVerdierType
     {
         [XmlElement(ElementName = "kodeVerdi", IsNullable = true)]
@@ -71,6 +72,7 @@ public class Avgiftskode
     [XmlElement(ElementName = "tidligereKodeVerdier", IsNullable = true)]
     public TidligereKodeVerdierType? TidligereKodeVerdier { get; set; }
 
+    [XmlType(TypeName = "AvgiftskodeTidligereKodeVerdierType", Namespace = MotorvognConstants.Namespace)]
     public class TidligereKodeVerdierType
     {
         [XmlElement(ElementName = "kodeVerdi", IsNullable = true)]
@@ -102,6 +104,7 @@ public class Registreringsstatus
     [XmlElement(ElementName = "tidligereKodeVerdier", IsNullable = true)]
     public TidligereKodeVerdierType? TidligereKodeVerdier { get; set; }
 
+    [XmlType(TypeName = "RegistreringsstatusTidligereKodeVerdierType", Namespace = MotorvognConstants.Namespace)]
     public class TidligereKodeVerdierType
     {
         [XmlElement(ElementName = "kodeVerdi", IsNullable = true)]

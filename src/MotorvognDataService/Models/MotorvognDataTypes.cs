@@ -7,11 +7,14 @@ namespace MotorvognDataService.Models;
 [XmlRoot(ElementName = "hentMotorvognData", Namespace = MotorvognConstants.Namespace)]
 public class HentMotorvognDataRequest
 {
-    [XmlElement(ElementName = "kjennemerke")]
-    public string? Kjennemerke { get; set; }
+    [XmlElement(ElementName = "type")]
+    public SearchType Type { get; set; }
 
-    [XmlElement(ElementName = "understellsnummer")]
-    public string? Understellsnummer { get; set; }
+    [XmlElement(ElementName = "input")]
+    public string Input { get; set; } = string.Empty;
+
+    [XmlElement(ElementName = "lastname")]
+    public string? Lastname { get; set; }
 }
 
 [XmlRoot(ElementName = "hentMotorvognEier", Namespace = MotorvognConstants.Namespace)]
@@ -69,8 +72,51 @@ public class HentMotorvognHistoriskRequest
 [XmlRoot(ElementName = "MotorvognData", Namespace = MotorvognConstants.Namespace)]
 public class MotorvognData
 {
-    [XmlElement(ElementName = "kjennemerke")]
-    public string? Kjennemerke { get; set; }
+    [XmlElement(ElementName = "data", IsNullable = true)]
+    public MotorvognDataItem[]? Data { get; set; }
+}
+
+[XmlType(Namespace = MotorvognConstants.Namespace)]
+public class MotorvognDataItem
+{
+    [XmlAttribute(AttributeName = "id")]
+    public string? Id { get; set; }
+
+    [XmlAttribute(AttributeName = "message")]
+    public string? Message { get; set; }
+
+    [XmlElement(ElementName = "eierinformasjon")]
+    public Eierinformasjon? Eierinformasjon { get; set; }
+
+    [XmlElement(ElementName = "periodiskKjoretoyKontroller")]
+    public PeriodiskKjoretoyKontroller? PeriodiskKjoretoyKontroller { get; set; }
+
+    [XmlElement(ElementName = "kjoretoeyinformasjon")]
+    public Kjoretoeyinformasjon? Kjoretoeyinformasjon { get; set; }
+
+    [XmlElement(ElementName = "maalOgVekt")]
+    public MaalOgVekt? MaalOgVekt { get; set; }
+
+    [XmlElement(ElementName = "motorOgKraftoverfoering")]
+    public MotorOgKraftoverfoering? MotorOgKraftoverfoering { get; set; }
+
+    [XmlElement(ElementName = "miljoedata")]
+    public Miljoedata? Miljoedata { get; set; }
+
+    [XmlElement(ElementName = "annetTeknisk")]
+    public AnnetTeknisk? AnnetTeknisk { get; set; }
+
+    [XmlElement(ElementName = "sitteOgStaaplasser")]
+    public SitteOgStaaplasser? SitteOgStaaplasser { get; set; }
+
+    [XmlElement(ElementName = "tilhengerkopling")]
+    public Tilhengerkopling? Tilhengerkopling { get; set; }
+
+    [XmlElement(ElementName = "akselinformasjon")]
+    public Akselinformasjon? Akselinformasjon { get; set; }
+
+    [XmlElement(ElementName = "dekkOgFelgtype")]
+    public DekkOgFelgtype? DekkOgFelgtype { get; set; }
 }
 
 [XmlRoot(ElementName = "MotorvognEier", Namespace = MotorvognConstants.Namespace)]
