@@ -3,7 +3,7 @@ using MotorvognDataService.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSingleton<IMotorvognDataService, MotorvognDataServiceImpl>();
+builder.Services.AddScoped<IMotorvognDataService, MotorvognDataServiceImpl>();
 builder.Services.AddSoapCore();
 
 var app = builder.Build();
